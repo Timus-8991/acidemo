@@ -11,11 +11,14 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  dockerId: acidemo  # Replace with your Docker ID for Docker Hub or the admin user name for the Azure Container Registry
+  imageName: acidemoimage:1
 
 steps:
 - script: dotnet restore
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
@@ -26,4 +29,15 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
 
+- script: |
+    docker build -t $(acidemo).azurecr.io/$(acidemoimage:1) .
+    docker login -u $(acidemo) -p $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(acidemo).azurecr.io
+    docker push $(acidemo).azurecr.io/$(acidemoimage:1)
 
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)' 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
