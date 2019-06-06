@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dockerId: acidemo
-  imageName: acidemoimage:1
+  imageName: acidemoimage
   password: 1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq
 
 steps:
@@ -31,7 +31,7 @@ steps:
     zipAfterPublish: true
 
 - script: |
-    docker build -t $(imageName) .
+    docker build -t $(dockerId)/$(imageName) .
     docker login -u $(dockerId) -p $(password) $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
 
