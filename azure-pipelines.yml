@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  dockerId: acidemo  # Replace with your Docker ID for Docker Hub or the admin user name for the Azure Container Registry
+  dockerId: acidemo
   imageName: acidemoimage:1
 
 steps:
