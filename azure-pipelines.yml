@@ -30,9 +30,9 @@ steps:
     zipAfterPublish: true
 
 - script: |
-    docker build -t $(acidemo).azurecr.io/$(acidemoimage:1) .
-    docker login -u $(acidemo) -p $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(acidemo).azurecr.io
-    docker push $(acidemo).azurecr.io/$(acidemoimage:1)
+    docker build -t $(imageName) .
+    docker login -u $(dockerId) -p $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(dockerId).azurecr.io
+    docker push $(dockerId).azurecr.io/$(acidemoimage:1)
 
 - task: CopyFiles@2
   inputs:
