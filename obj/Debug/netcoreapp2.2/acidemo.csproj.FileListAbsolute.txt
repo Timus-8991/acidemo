@@ -1,0 +1,3 @@
+D:\acidemo\obj\Debug\netcoreapp2.2\acidemo.csproj.CoreCompileInputs.cache
+D:\acidemo\obj\Debug\netcoreapp2.2\acidemo.AssemblyInfoInputs.cache
+D:\acidemo\obj\Debug\netcoreapp2.2\acidemo.AssemblyInfo.cs
