@@ -12,8 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dockerId: acidemo
-  imageName: acidemoimage
-  tag: 2
+  imageName: acidemoimage:2
   password: 1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq
 
 steps:
@@ -32,10 +31,10 @@ steps:
     zipAfterPublish: true
 
 - script: |
-    docker build -t $(dockerId)/$(imageName):$(tag) .
+    docker build -t $(imageName) .
     docker login -u $(dockerId) -p $(password) $(dockerId).azurecr.io
-    docker tag $(imageName):$(tag) $(dockerId).azurecr.io/$(imageName):$(tag)
-    docker push $(dockerId).azurecr.io/$(imageName):$(tag)
+    docker tag $(imageName) $(dockerId).azurecr.io/$(imageName)
+    docker push $(dockerId).azurecr.io/$(imageName)
 
 - task: CopyFiles@2
   inputs:
