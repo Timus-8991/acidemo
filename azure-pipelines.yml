@@ -13,6 +13,7 @@ variables:
   buildConfiguration: 'Release'
   dockerId: acidemo
   imageName: acidemoimage:1
+  password: 1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq
 
 steps:
 - script: dotnet restore
@@ -31,8 +32,8 @@ steps:
 
 - script: |
     docker build -t $(imageName) .
-    docker login -u $(dockerId) --password-stdin $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(dockerId).azurecr.io
-    docker push $(dockerId).azurecr.io/$(acidemoimage:1)
+    docker login -u $(dockerId) -p $(password) $(dockerId).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageName)
 
 - task: CopyFiles@2
   inputs:
