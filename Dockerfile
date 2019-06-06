@@ -17,6 +17,6 @@ EXPOSE 443
 #RUN dotnet publish "acidemo.csproj" -c Release -o /app
 
 #FROM base AS final
-WORKDIR /app
-COPY --from=publish /app .
+#WORKDIR /app
+#COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "acidemo.dll"]
