@@ -31,7 +31,7 @@ steps:
 
 - script: |
     docker build -t $(imageName) .
-    docker login -u $(dockerId) -p $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(dockerId).azurecr.io
+    docker login -u $(dockerId) --password-stdin $(1e/kQmXmeckjAw4FQudSDZ2nZ=eMV5Sq) $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(acidemoimage:1)
 
 - task: CopyFiles@2
