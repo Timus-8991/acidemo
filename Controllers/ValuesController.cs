@@ -14,7 +14,7 @@ namespace acidemo.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "have", "fun" };
+            return new string[] { "in ", "aci demo" };
         }
 
         // GET api/values/5
